@@ -11,18 +11,29 @@
 
 {% block content %}
     <div class="todo-app">
-        <!-- List of To-Do Tasks Here -->
-        <h2>To-Do List <img src="{% static 'icon.png' %}" alt="To-Do List Icon"></h2>
-        <div class="row">
-            <input type="text" id="task" placeholder="Add your Task">
-            <button id="add" onclick="addTask()">Add</button>
-        </div>
-        <ul id="list-continer">
-            
+        <h2>Create Todo Item</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create</button>
+        </form>
+
+        <h2>Todo Items</h2>
+        <ul>
+            {% if todo_items %}
+                {% for item in todo_items %}
+                    <li>
+                        {{ item.item }} - {% if item.is_completed %}Completed{% else %}Not Completed{% endif %}
+                        (Due: {{ item.due_date }})
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>No items to display</li>
+            {% endif %}
         </ul>
     </div>
 {% endblock %}
 
 {% block scripts %}
-    <script src="{% static 'script.js' %}"></script>
+    <!-- <script src="{% static 'script.js' %}"></script>-->
 {% endblock %}
