@@ -1,4 +1,3 @@
-from tkinter.font import names
 from .forms import UserLoginForm, UserRegisterForm
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -9,7 +8,7 @@ from .models import TodoItem
 from .models import TodoList
 
 
-@login_required
+@login_required(login_url='/login/')
 def index(request):
     if request.method == 'POST':
         form = TodoItemForm(request.POST)
