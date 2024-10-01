@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    To-Do List App
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="todo-app">
+        <!-- List of To-Do Tasks Here -->
+        <h2>To-Do List <img src="{% static 'icon.png' %}" alt="To-Do List Icon"></h2>
+        <div class="row">
+            <input type="text" id="task" placeholder="Add your Task">
+            <button id="add" onclick="addTask()">Add</button>
+        </div>
+        <ul id="list-continer">
+            
+        </ul>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'script.js' %}"></script>
+{% endblock %}
