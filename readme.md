@@ -40,6 +40,7 @@ This is a simple To-Do List web application built with Django. It allows users t
 4. **Run migrations:**
     ```bash
     python manage.py makemigrations
+    python manage.py makemigrations index
     python manage.py migrate
    ```
    
