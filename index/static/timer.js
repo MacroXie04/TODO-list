@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var countDownDate = new Date(dateString);
     if (isNaN(countDownDate)) {
         // 日期解析失败，显示错误信息
-        timberElement.innerText = "日期格式错误";
+        timberElement.innerText = "No Due Date";
         return;
     }
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (distance <= 0) {
             clearInterval(x);
-            timberElement.innerText = "倒计时结束";
+            timberElement.innerText = "Due Date has passed";
             return;
         }
 
@@ -34,6 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
         var seconds = Math.floor((distance % (1000 *60)) / 1000);
 
         // 更新页面显示
-        timberElement.innerText = days + "天 " + hours + "时 " + minutes + "分 " + seconds + "秒";
+        timberElement.innerText = days + " days " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
     }, 1000);
 });
