@@ -29,7 +29,7 @@
                 <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-center">
                     <div class="d-flex flex-column">
                         <span>{{ item.item }}</span>
-                        <span id="timer" data-time="{{ item.due_date|date:"Y-m-d\TH:i:s" }}"> {{ item.due_date }}</span>
+                        <span class="timer" id="timer" data-time="{{ item.due_date|date:"Y-m-d\TH:i:s" }}"> {{ item.due_date }}</span>
                     </div>
                     <a href="{% url 'complete_todo' item.id %}" class="btn btn-success btn-sm mt-2 mt-md-0 ms-md-auto">Complete</a>
                 </div>
