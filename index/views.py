@@ -8,7 +8,7 @@ from .models import TodoItem
 from .models import TodoList
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import logout
-
+from django.http import HttpResponseForbidden
 
 @login_required(login_url='/login/')
 def complete_todo(request, item_id):
