@@ -15,8 +15,8 @@ This is a simple To-Do List web application built with Django. It allows users t
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/django-todo-app.git
-   cd django-todo-app
+   git clone https://github.com/MacroXie04/TODO-list.git
+   cd TODO-list
    ```
 
 2. **Create a virtual environment:**
