@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
     {% block style %}{% endblock %}
-    
-    
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+
+
 </head>
 <body>
-<div class="container">
+<div class="todo_container">
     {% block content %}
     {% endblock %}
 </div>

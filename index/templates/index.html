@@ -7,33 +7,60 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
+
 {% endblock %}
 
 {% block content %}
     <div class="todo-app">
-        <h2>Create Todo Item</h2>
+        <h3>Create Todo Item</h3>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Create</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; display: block; text-align: center;">
+                Create
+            </button>
         </form>
-
-        <h2>Todo Items</h2>
-        <ul>
-            {% if todo_items %}
-                {% for item in todo_items %}
-                    <li>
-                        {{ item.item }} - {% if item.is_completed %}Completed{% else %}Not Completed{% endif %}
-                        (Due: {{ item.due_date }})
-                    </li>
-                {% endfor %}
-            {% else %}
-                <li>No items to display</li>
-            {% endif %}
-        </ul>
     </div>
+
+    <div class="todo-app">
+        <h3>{{ todo_name }}</h3>
+        <div class="list-group d-flex justify-content-between">
+            {% for item in items_not_completed %}
+                <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <div class="d-flex flex-column">
+                        <span>{{ item.item }}</span>
+                        <span id="timer" data-time="{{ item.due_date|date:"Y-m-d\TH:i:s" }}"> {{ item.due_date }}</span>
+                    </div>
+                    <a href="{% url 'complete_todo' item.id %}" class="btn btn-success btn-sm mt-2 mt-md-0 ms-md-auto">Complete</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="todo-app">
+        <h3>Completed Todo</h3>
+        <div class="list-group d-flex justify-content-between">
+            {% for item in items_completed %}
+                <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <div class="d-flex flex-column">
+                        <span>{{ item.item }}</span>
+                    </div>
+                    <a href="{% url 'delete_item' item.id %}" class="btn btn-success btn-sm mt-2 mt-md-0 ms-md-auto">Delete</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="todo-app">
+        <a href="{% url 'logout' %}">
+            <button type="submit" class="btn btn-primary" style="width: 100%; display: block; text-align: center;">
+                Logout
+            </button>
+        </a>
+    </div>
+
 {% endblock %}
 
 {% block scripts %}
-    <!-- <script src="{% static 'script.js' %}"></script>-->
+    <script src="{% static 'timer.js' %}"></script>
 {% endblock %}
